@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "release-compass": {
+      "type": "http",
+      "url": "https://api.release-compass.app/api/v1/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.release_compass_api_key}"
+      }
+    }
+  }
+}

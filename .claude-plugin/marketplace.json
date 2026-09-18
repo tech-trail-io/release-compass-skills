@@ -2,7 +2,8 @@
   "name": "release-compass-skills",
   "owner": {
     "name": "TechTrail",
-    "email": "hello@release-compass.app"
+    "email": "hello@release-compass.app",
+    "url": "https://release-compass.app"
   },
   "metadata": {
     "description": "Customer-facing changelog writing and Release Compass MCP workflows.",
@@ -13,14 +14,13 @@
       "name": "release-compass-skills",
       "source": "./",
       "description": "Rewrite technical changelogs into customer-facing notes and import them with Release Compass MCP.",
-      "version": "0.1.2",
       "author": {
         "name": "TechTrail"
       },
-      "keywords": ["changelog", "release-notes", "release-compass", "mcp"],
-      "homepage": "https://release-compass.app",
+      "homepage": "https://release-compass.app/docs/#skills",
       "repository": "https://github.com/tech-trail-io/release-compass-skills",
-      "license": "MIT"
+      "license": "MIT",
+      "keywords": ["changelog", "release-notes", "release-compass", "mcp"]
     }
   ]
 }

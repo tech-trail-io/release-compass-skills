@@ -1,0 +1,24 @@
+{
+  "name": "release-compass-skills",
+  "displayName": "Release Compass skills",
+  "version": "0.1.2",
+  "description": "Rewrite technical changelogs into customer-facing notes and import them with Release Compass MCP.",
+  "author": {
+    "name": "TechTrail",
+    "email": "hello@release-compass.app",
+    "url": "https://techtrail.io"
+  },
+  "homepage": "https://release-compass.app/docs/#skills",
+  "repository": "https://github.com/tech-trail-io/release-compass-skills",
+  "license": "MIT",
+  "keywords": ["changelog", "release-notes", "release-compass", "mcp"],
+  "userConfig": {
+    "release_compass_api_key": {
+      "type": "string",
+      "title": "Release Compass API key",
+      "description": "Project API key from the dashboard (rc_live_…). Selects the changelog project.",
+      "sensitive": true,
+      "required": true
+    }
+  }
+}
