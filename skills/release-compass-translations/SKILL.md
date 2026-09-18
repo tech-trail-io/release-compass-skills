@@ -31,7 +31,17 @@ Optional `changes`. If nested `changes` errors, omit it; keep headed lists in
 `body` so the parser can fill change lists.
 
 Does not publish. Does not email subscribers. One MCP quota call per note per
-locale — bulk-create first, then translate.
+locale — bulk-create or rewrite first, then translate.
+
+## Before publish
+
+If the user wants extra languages on **drafts**, call `put_release_translation`
+**before** `publish_release` so the first public view and subscriber email
+include them. Adding a language after publish is also supported and does not
+email. `publishedAt` stays the original instant.
+
+When rewriting **published** notes, call the default locale (updates
+`customerTitle` / `customerBody`) and each other locale. Do not unpublish.
 
 ## Copy rules
 

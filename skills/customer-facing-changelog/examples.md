@@ -19,8 +19,6 @@ Title: `Invoice export`
 ```markdown
 Finance can download invoices as CSV.
 
-Released 3 March 2026.
-
 ## Features
 - Invoice export as CSV
 
@@ -65,8 +63,6 @@ Title: `Company prices and sign-in`
 ```markdown
 Catalog prices match your company. Sign-in is more reliable.
 
-Released 17 June 2026.
-
 ## Features
 - Catalog prices for your company
 - Sign-in reliability
@@ -87,8 +83,6 @@ Title: `Team invites and more languages`
 
 ```markdown
 Invite colleagues to the same company account. Use the product in English or German.
-
-Released 3 July 2026.
 
 ## Features
 - Several users per company account

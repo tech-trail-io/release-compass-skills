@@ -28,6 +28,7 @@ over REST unless the user asks for HTTP. The MCP schemas and
 | New note, not shipped yet | `create_release` → draft. No `publishedAt` |
 | Already shipped / backfill | `create_releases` → **published**. Optional past `publishedAt` |
 | Edit draft / scheduled customer copy | `update_release` |
+| Rewrite **published** default-locale copy | `put_release_translation` with the project default locale (sets `editedAt`, no email) |
 | Add or replace a **language** (including published) | `put_release_translation` |
 | Ship a draft now | `publish_release` (emails matching subscribers) |
 | Hold for later | `schedule_release` (`scheduledAt` future ISO-8601, **`timeZone` IANA required**) |
@@ -46,6 +47,20 @@ separate from changelog notes.
   (no overwrite, no merge). **Does not email.** One quota call per batch.
 
 Never use `create_release` + `publish_release` to fake a historical date.
+
+## GitHub-shaped notes already in the project
+
+`list_releases` first. Action / release-please drafts often freeze GitHub
+source as customer copy (title is `v0.6.0`, body still has `feat:` / PR links).
+Rewrite with [customer-facing-changelog](../customer-facing-changelog/SKILL.md),
+then:
+
+1. Default locale: `update_release` (draft / scheduled) or
+   `put_release_translation` with the default locale (published).
+2. Other locales: `put_release_translation` **before** `publish_release` if the
+   user asked for translations.
+3. `publish_release` only for drafts the user asked to ship (emails
+   subscribers). Do not unpublish a live note just to edit copy.
 
 ## Body and changes
 

@@ -47,7 +47,7 @@ Each item:
 |-------|----------|--------|
 | `version` | yes | Unique per project. Keep **one** prefix (`v1.4.0` **or** `1.4.0`) |
 | `title` | yes | Customer headline |
-| `body` | yes | Markdown. Headings parse into change lists |
+| `body` | yes | Markdown. Headings parse into change lists. Do **not** include a “Released …” date line; `publishedAt` is shown on the public page |
 | `channel` | no | If omitted, inferred from the version (`-rc` → `rc`, else often `stable`). Prereleases stay off the default public list |
 | `locale` | no | **Omit** on the first import so the server uses the project default. Do not guess `en` |
 | `publishedAt` | no | ISO-8601 **instant** (not date-only `2026-03-03`). Past allowed. Omit = now. Future rejected |
