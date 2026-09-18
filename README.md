@@ -58,14 +58,19 @@ Or clone into `~/.cursor/skills/` (user-level). Cursor also loads
 
 ## Typical flow
 
-1. Rewrite the technical changelog (show a draft table first). Heading dates
-   become `publishedAt` instants.
-2. Import with `create_releases` `{ "releases": [ … ] }` and past
+1. `list_releases`. If customer copy is still GitHub source (version-as-title,
+   `feat:`, PR links), rewrite it — drafts with `update_release`, published
+   notes with `put_release_translation` on the default locale. Do not put a
+   “Released …” line in the body; the page already shows `publishedAt`.
+2. For a new import, rewrite the technical changelog (show a draft table
+   first). Heading dates become `publishedAt` instants.
+3. Import with `create_releases` `{ "releases": [ … ] }` and past
    `publishedAt`. Omit `locale` so the project default is used. Do not use
    `create_release`.
-3. Attach other locales with `put_release_translation` (one MCP call per
-   locale per note).
-4. If a version is wrong, `delete_release` then bulk-create again — existing
+4. Attach other locales with `put_release_translation` (one MCP call per
+   locale per note) **before** `publish_release` when the notes are still
+   drafts.
+5. If a version is wrong, `delete_release` then bulk-create again — existing
    versions are never overwritten.
 
 Docs: [release-compass.app/docs](https://release-compass.app/docs/) ·

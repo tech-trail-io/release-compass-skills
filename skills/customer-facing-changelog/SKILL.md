@@ -44,6 +44,8 @@ If a version is **only** the items in “What to hide”, use **Internal changes
 - Product language, not git language
 - One short intro paragraph, then headed lists
 - No hype, no internal codenames
+- No ship date in the body (`Released 3 March 2026`, `Megjelent …`). The public
+  page already shows `publishedAt`.
 
 ## Markdown shape
 
@@ -54,8 +56,6 @@ Recognised headings become grouped change lists on the public changelog:
 
 ```markdown
 Short intro of what changed for you.
-
-Released 3 March 2026.
 
 ## Features
 - Export invoices as CSV
@@ -78,7 +78,8 @@ parser can group lists. Put translated bullets under those headings.
 
 ## Title
 
-A short customer headline, not the version string and not a commit subject.
+A short customer headline, not the version string (`v0.6.0`) and not a commit
+subject.
 
 | Source | Title |
 |--------|--------|
@@ -108,6 +109,26 @@ Show the user a table, then wait:
 
 After approval, follow [import-historical-releases](../import-historical-releases/SKILL.md)
 and [release-compass-mcp](../release-compass-mcp/SKILL.md).
+
+## Notes already in Release Compass
+
+`list_releases` first. GitHub Action / release-please often freeze the GitHub
+release as `customerTitle` / `customerBody`. Rewrite when any of these are true:
+
+- `customerTitle` is the version string (`v0.6.0`)
+- Body still has `feat:`, PR URLs, `@handles`, or `## What's Changed`
+- Body repeats a ship date the UI already shows
+
+Then write customer copy as usual and save it:
+
+| Status | Default locale | Other locales |
+|--------|----------------|---------------|
+| Draft / scheduled | `update_release` | `put_release_translation` |
+| Published | `put_release_translation` with the **default** locale | `put_release_translation` |
+
+Do not unpublish to rewrite copy. If the user wants extra languages on drafts,
+attach them **before** `publish_release`. Confirm before publishing (emails
+subscribers). See [release-compass-translations](../release-compass-translations/SKILL.md).
 
 ## Examples
 
