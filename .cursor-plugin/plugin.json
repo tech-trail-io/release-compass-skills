@@ -1,7 +1,7 @@
 {
   "name": "release-compass-skills",
-  "version": "0.1.2",
-  "description": "Rewrite technical changelogs into customer-facing notes and import them with Release Compass MCP.",
+  "version": "0.1.3",
+  "description": "Customer-facing changelog skills, Release Compass MCP workflows, and embed client integration.",
   "author": {
     "name": "TechTrail"
   },

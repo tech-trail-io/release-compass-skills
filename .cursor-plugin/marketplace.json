@@ -5,15 +5,15 @@
     "email": "hello@release-compass.app"
   },
   "metadata": {
-    "description": "Customer-facing changelog writing and Release Compass MCP workflows.",
-    "version": "0.1.2"
+    "description": "Customer-facing changelog skills, Release Compass MCP workflows, and embed client integration.",
+    "version": "0.1.3"
   },
   "plugins": [
     {
       "name": "release-compass-skills",
       "source": "./",
-      "description": "Rewrite technical changelogs into customer-facing notes and import them with Release Compass MCP.",
-      "version": "0.1.2",
+      "description": "Customer-facing changelog skills, Release Compass MCP workflows, and embed client integration.",
+      "version": "0.1.3",
       "author": {
         "name": "TechTrail"
       },
