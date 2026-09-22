@@ -24,10 +24,12 @@ over REST unless the user asks for HTTP. The MCP schemas and
 
 | Intent | Tool |
 |--------|------|
+| Project name, slug, default language | `get_project` |
 | See what exists | `list_releases` / `get_release` |
 | New note, not shipped yet | `create_release` → draft. No `publishedAt` |
 | Already shipped / backfill | `create_releases` → **published**. Optional past `publishedAt` |
 | Edit draft / scheduled customer copy | `update_release` |
+| AI rewrite from source (BYOK) | `rewrite_release_customer_copy` |
 | Rewrite **published** default-locale copy | `put_release_translation` with the project default locale (sets `editedAt`, no email) |
 | Add or replace a **language** (including published) | `put_release_translation` |
 | Ship a draft now | `publish_release` (emails matching subscribers) |
@@ -72,10 +74,10 @@ without the `changes` array** and keep the lists in `body`.
 
 ## Locales
 
-There is no `get_project` tool. An empty `list_releases` has no slug. **Omit
-`locale`** on `create_*` so the server uses the project default. Do not guess
-`en`. After the first create, each item includes `slug`; public JSON
-`project.defaultLocale` is the source of truth.
+Call `get_project` for `defaultLocale`, `slug`, `name`, and `description`. An
+empty `list_releases` has no slug. Prefer omitting `locale` on `create_*` so the
+server uses the project default, or pass the value from `get_project`. Do not
+guess `en`.
 
 - If you pass a non-default locale, default-locale fields are still filled
   with the same text. Then call `put_release_translation` for the real default
