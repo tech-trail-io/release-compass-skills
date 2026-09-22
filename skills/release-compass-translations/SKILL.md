@@ -56,11 +56,12 @@ and the equivalent in the other language.
 
 ## Verify
 
-Use `slug` from the MCP release payload (do not invent it):
+Use `ownerSlug` + project `slug` from the MCP release payload (or parse
+`changelogUrl`) — do not invent them:
 
 ```text
-GET https://api.release-compass.app/api/v1/public/changelogs/{slug}?lang=hu
-GET https://api.release-compass.app/api/v1/public/changelogs/{slug}?lang=en
+GET https://api.release-compass.app/api/v1/public/changelogs/{owner}/{project}?lang=hu
+GET https://api.release-compass.app/api/v1/public/changelogs/{owner}/{project}?lang=en
 ```
 
 Check `availableLocales`, each item’s `locales` array, and that titles **differ**
