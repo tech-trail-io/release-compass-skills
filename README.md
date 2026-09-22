@@ -1,8 +1,10 @@
 # Release Compass skills
 
 Reusable [Agent Skills](https://agentskills.io) for writing **customer-facing**
-changelog notes and importing them with the
-[Release Compass](https://release-compass.app) MCP.
+changelog notes, importing them with the
+[Release Compass](https://release-compass.app) MCP, and embedding changelogs
+or request boards with the
+[client libraries](https://github.com/tech-trail-io/release-compass-clients).
 
 This repository is a **Cursor plugin** and a **Claude Code plugin**. Skills can
 also be copied into any Agent Skills folder. It contains **no product-specific
@@ -16,6 +18,7 @@ changelogs**. Point the MCP at **your** project API key.
 | [import-historical-releases](skills/import-historical-releases/SKILL.md) | Bulk-import already shipped notes with original `publishedAt` |
 | [release-compass-mcp](skills/release-compass-mcp/SKILL.md) | List, create, publish, delete, and other MCP tools |
 | [release-compass-translations](skills/release-compass-translations/SKILL.md) | Add languages on drafts or published notes |
+| [release-compass-embed-clients](skills/release-compass-embed-clients/SKILL.md) | Embed public React/Angular changelogs and boards; Next/core for private boards and voting |
 
 In Claude Code, skills are namespaced:
 `/release-compass-skills:customer-facing-changelog`, and so on.
