@@ -20,18 +20,22 @@ props, or `NEXT_PUBLIC_*` env vars.
 
 | Goal | Package | Auth |
 |------|---------|------|
-| Public changelog / public roadmap UI in React | `@techtrail/release-compass-react` | project **slug** only |
-| Same in Angular | `@techtrail/release-compass-angular` | project **slug** only |
+| Public changelog / public roadmap UI in React | `@techtrail/release-compass-react` | **owner** + **project** slug |
+| Same in Angular | `@techtrail/release-compass-angular` | **owner** + **project** slug |
 | Private board, create, vote, status from Next.js | `@techtrail/release-compass-next` | `RELEASE_COMPASS_API_KEY` on the **server** |
 | Custom backend (Express, Nest, …) | `@techtrail/release-compass-core` `createServerClient` | API key on the **server** |
-| Headless fetch only (any runtime) | `@techtrail/release-compass-core` `createPublicClient` | slug only |
+| Headless fetch only (any runtime) | `@techtrail/release-compass-core` `createPublicClient` | owner + project slug |
 | Vue | Not available yet (**Soon**) | — |
 
 Default API base: `https://api.release-compass.app/api/v1` (overridable with
 `baseUrl` / `RELEASE_COMPASS_API_BASE_URL`).
 
-Ask the user for the **project slug** (from the dashboard) before coding. For
-private boards or voting, also ask where the API key will live (server env).
+Public API paths are `/api/v1/public/changelogs/{owner}/{project}`. The owner
+segment is a user **username** or organization **slug**.
+
+Ask the user for the **owner** (username or org slug) and **project slug**
+(from the dashboard) before coding. For private boards or voting, also ask
+where the API key will live (server env).
 
 ## Install
 
@@ -54,8 +58,8 @@ pnpm add @techtrail/release-compass-core
 ## Public React
 
 1. Install `@techtrail/release-compass-react`.
-2. Wrap the surface with `ReleaseCompassProvider` (`projectSlug`, optional
-   `baseUrl`, optional `lang`).
+2. Wrap the surface with `ReleaseCompassProvider` (`ownerSlug` or `owner`,
+   `projectSlug`, optional `baseUrl`, optional `lang`).
 3. Render `Changelog` and/or `RequestBoard`.
 4. Style via your CSS targeting `data-rc` attributes (headless markup).
 
@@ -68,7 +72,7 @@ import {
 
 export function ProductUpdates() {
   return (
-    <ReleaseCompassProvider projectSlug="your-project-slug">
+    <ReleaseCompassProvider ownerSlug="acme" projectSlug="signals">
       <Changelog />
       <RequestBoard />
     </ReleaseCompassProvider>
@@ -83,8 +87,8 @@ API key. Voting goes through a backend Route Handler / Server Action (Next) or
 ## Public Angular
 
 1. Install `@techtrail/release-compass-angular`.
-2. `provideReleaseCompass({ projectSlug })` in `bootstrapApplication` (or a
-   route/providers array).
+2. `provideReleaseCompass({ ownerSlug, projectSlug })` in
+   `bootstrapApplication` (or a route/providers array).
 3. Use standalone `<rc-changelog />` and `<rc-request-board />`.
 
 ```ts
@@ -95,7 +99,9 @@ import {
 } from "@techtrail/release-compass-angular";
 
 bootstrapApplication(AppComponent, {
-  providers: [provideReleaseCompass({ projectSlug: "your-project-slug" })],
+  providers: [
+    provideReleaseCompass({ ownerSlug: "acme", projectSlug: "signals" }),
+  ],
 });
 ```
 
@@ -106,7 +112,11 @@ bootstrapApplication(AppComponent, {
 
 ```bash
 RELEASE_COMPASS_API_KEY=rc_live_…
-RELEASE_COMPASS_PROJECT_SLUG=your-project-slug
+# Either:
+RELEASE_COMPASS_OWNER_SLUG=acme
+RELEASE_COMPASS_PROJECT_SLUG=signals
+# Or combined:
+# RELEASE_COMPASS_PROJECT=acme/signals
 ```
 
 3. Call helpers from Route Handlers, Server Actions, or RSC only:
@@ -145,13 +155,17 @@ import {
   createServerClient,
 } from "@techtrail/release-compass-core";
 
-const publicClient = createPublicClient({ projectSlug: "your-project-slug" });
+const publicClient = createPublicClient({
+  ownerSlug: "acme",
+  projectSlug: "signals",
+});
 await publicClient.getChangelog();
 await publicClient.getRequestBoard();
 
 // Server only
 const server = createServerClient({
-  projectSlug: "your-project-slug",
+  ownerSlug: "acme",
+  projectSlug: "signals",
   apiKey: process.env.RELEASE_COMPASS_API_KEY!,
 });
 await server.getRequestBoard(); // includes private boards
@@ -163,13 +177,13 @@ await server.updateRequest("request-id", { status: "planned" });
 ## Checklist before finishing
 
 - [ ] Correct package for public vs server
-- [ ] Project slug from the user (no invented slug)
+- [ ] Owner (username or org slug) + project slug from the user (no invented values)
 - [ ] No API key in client bundles or `NEXT_PUBLIC_*`
 - [ ] Public roadmap UI has no secret-backed vote buttons; votes go through the consumer backend when needed
 - [ ] Headless embeds: add minimal CSS or map `data-rc` to the product design system
 - [ ] Point the user at the hosted page as a fallback:
-  `https://release-compass.app/changelog/{slug}/` and
-  `https://release-compass.app/roadmap/{slug}/`
+  `https://release-compass.app/changelog/{owner}/{project}/` and
+  `https://release-compass.app/roadmap/{owner}/{project}/`
 
 ## Out of scope for this skill
 

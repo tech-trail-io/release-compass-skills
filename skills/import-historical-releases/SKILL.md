@@ -78,9 +78,10 @@ Example: `2026-09-08T09:45:36+02:00` → `2026-09-08T07:45:36.000Z`
 ## After import
 
 1. `list_releases` and check `status`, `publishedAt`, and `translations`. Use
-   `slug` and `changelogUrl` from the payload — do not invent the slug.
+   `ownerSlug`, project `slug`, and `changelogUrl` from the payload — do not
+   invent paths.
 2. Public JSON (includes `project.defaultLocale`):
-   `GET https://api.release-compass.app/api/v1/public/changelogs/{slug}?lang={locale}`
+   `GET https://api.release-compass.app/api/v1/public/changelogs/{owner}/{project}?lang={locale}`
 3. Add other languages with **`put_release_translation`** (works on published
    notes). Do not unpublish just to add a language.
 4. Wrong `publishedAt` on a version: **`delete_release`**, then `create_releases`

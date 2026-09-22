@@ -102,5 +102,6 @@ To replace a version: `delete_release` → `create_releases` with the intended
 
 - Confirm with the user before `delete_release` or bulk `create_releases`.
 - Do not print API keys or JWT.
-- Public changelog JSON (use `slug` from the MCP payload):
-  `GET https://api.release-compass.app/api/v1/public/changelogs/{slug}`
+- Public changelog JSON (use `ownerSlug` + project `slug` from the MCP
+  payload, or parse `changelogUrl`):
+  `GET https://api.release-compass.app/api/v1/public/changelogs/{owner}/{project}`
