@@ -2,12 +2,12 @@
   "name": "release-compass-skills",
   "owner": {
     "name": "TechTrail",
-    "email": "hello@release-compass.app",
-    "url": "https://release-compass.app"
+    "email": "info@techtrail.io",
+    "url": "https://techtrail.io"
   },
   "metadata": {
     "description": "Customer-facing changelog skills, Release Compass MCP workflows, and embed client integration.",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "plugins": [
     {

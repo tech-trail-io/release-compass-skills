@@ -1,4 +1,8 @@
-# Release Compass skills
+<p align="center">
+  <img src="assets/logo.svg" alt="Release Compass" width="120">
+</p>
+
+# Release Compass Skills
 
 Reusable [Agent Skills](https://agentskills.io) for writing **customer-facing**
 changelog notes, importing them with the
@@ -12,12 +16,12 @@ changelogs**. Point the MCP at **your** project API key.
 
 ## Skills
 
-| Skill | When to use |
-|-------|-------------|
-| [customer-facing-changelog](skills/customer-facing-changelog/SKILL.md) | Rewrite Keep a Changelog / GitHub releases / commits for readers |
-| [import-historical-releases](skills/import-historical-releases/SKILL.md) | Bulk-import already shipped notes with original `publishedAt` |
-| [release-compass-mcp](skills/release-compass-mcp/SKILL.md) | List, create, publish, delete, and other MCP tools |
-| [release-compass-translations](skills/release-compass-translations/SKILL.md) | Add languages on drafts or published notes |
+| Skill                                                                          | When to use                                                                               |
+| ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| [customer-facing-changelog](skills/customer-facing-changelog/SKILL.md)         | Rewrite Keep a Changelog / GitHub releases / commits for readers                          |
+| [import-historical-releases](skills/import-historical-releases/SKILL.md)       | Bulk-import already shipped notes with original `publishedAt`                             |
+| [release-compass-mcp](skills/release-compass-mcp/SKILL.md)                     | List, create, publish, delete, and other MCP tools                                        |
+| [release-compass-translations](skills/release-compass-translations/SKILL.md)   | Add languages on drafts or published notes                                                |
 | [release-compass-embed-clients](skills/release-compass-embed-clients/SKILL.md) | Embed public React/Angular changelogs and boards; Next/core for private boards and voting |
 
 In Claude Code, skills are namespaced:

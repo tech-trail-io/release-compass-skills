@@ -1,17 +1,26 @@
 {
   "name": "release-compass-skills",
-  "displayName": "Release Compass skills",
-  "version": "0.1.3",
-  "description": "Customer-facing changelog skills, Release Compass MCP workflows, and embed client integration.",
+  "displayName": "Release Compass Skills",
+  "version": "0.1.4",
+  "description": "AI-powered release management skills for creating, importing, translating, and publishing customer-facing changelogs with Release Compass.",
   "author": {
     "name": "TechTrail",
-    "email": "hello@release-compass.app",
+    "email": "info@techtrail.io",
     "url": "https://techtrail.io"
   },
   "homepage": "https://release-compass.app/docs/#skills",
   "repository": "https://github.com/tech-trail-io/release-compass-skills",
   "license": "MIT",
-  "keywords": ["changelog", "release-notes", "release-compass", "mcp"],
+  "keywords": [
+    "changelog",
+    "release-notes",
+    "release-management",
+    "release-compass",
+    "mcp",
+    "release",
+    "product-updates",
+    "customer-facing"
+  ],
   "userConfig": {
     "release_compass_api_key": {
       "type": "string",
