@@ -40,6 +40,14 @@ over REST unless the user asks for HTTP. The MCP schemas and
 Feature requests (`create_request`, `vote_request`, `approve_request`, …) are
 separate from changelog notes.
 
+**Changelog filters** (**Settings → Changelog filters** in the dashboard) hide
+published notes from the public changelog by title, description, or change type.
+They are not exposed through MCP: `get_project` does not return them, and the
+key cannot change them. Filters apply automatically, so a note the user wants
+visible may be hidden by a rule, and an internal note will not show even if it
+is published. If a published note is missing from the public page, check those
+filters before re-publishing.
+
 ## create_release vs create_releases
 
 - **`create_release`**: one draft. Source fields freeze. Release manager edits

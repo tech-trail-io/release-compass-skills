@@ -38,6 +38,11 @@ Each note is a short headline plus Markdown body. Readers should learn what
 
 If a version is **only** the items in “What to hide”, use **Internal changes only.**
 
+The project may also hide changes automatically (**Settings → Changelog filters**),
+matching titles such as “admin”, “permissions”, or “infra”, or change types such as
+`chore`. Write the copy as the customer should read it; if a visible note is hidden
+by a filter, the user can adjust the filter, not the copy.
+
 ## Voice
 
 - Second person (“you can…”)
