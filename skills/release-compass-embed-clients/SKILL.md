@@ -174,6 +174,14 @@ await server.voteRequest("request-id", "user-42");
 await server.updateRequest("request-id", { status: "planned" });
 ```
 
+## Changelog filters
+
+Hidden changes never reach the client. The public changelog endpoint applies the
+project's filters (**Settings → Changelog filters**) server-side, so do not add
+client-side filtering for them. Filters cannot be changed through the SDK or with
+an API key; if the user wants a change hidden or shown, point them to that
+settings page (a project admin must make the change).
+
 ## Checklist before finishing
 
 - [ ] Correct package for public vs server
